@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum CalculatorBrainEvaluationResult {
+    case Success(Double)
+    case Failure(String)
+}
+
 class CalculatorBrain{
     private enum Op : CustomStringConvertible {
         case Operand(Double)
@@ -40,7 +45,8 @@ class CalculatorBrain{
     
     private var knownOps = [String:Op]()
     
-    //create a private struct for the recursion (string, Last type)
+    private var error: String?
+    
     
     var variableValues = Dictionary<String,Double> ()
     
@@ -49,7 +55,7 @@ class CalculatorBrain{
     var description: String? {
         var (currentResult,remainingOps) = evaluateDescription(opStack)
         while (remainingOps.isEmpty == false) {
-            var (oldResult,newRemainingOps) = evaluateDescription(remainingOps)
+            let (oldResult,newRemainingOps) = evaluateDescription(remainingOps)
             currentResult = oldResult! + ", " + currentResult!
             remainingOps = newRemainingOps
         }
@@ -110,6 +116,34 @@ class CalculatorBrain{
         return ("?",ops)
     }
     
+    
+    typealias PropertyList = AnyObject
+    var program: PropertyList { // guaranteed to be a PropertyList
+        get {
+            return opStack.map { $0.description }
+        }
+        set {
+            if let opSymbols = newValue as? [String] {
+                var newOpStack = [Op]()
+                for opSymbol in opSymbols {
+                    if let op = knownOps[opSymbol] {
+                        newOpStack.append(op)
+                    } else if let operand = NSNumberFormatter().numberFromString(opSymbol)?.doubleValue {
+                        newOpStack.append(.Operand(operand))
+                        //                    } else if variableValues[opSymbol] != nil {
+                    } else {
+                        newOpStack.append(.Variable(opSymbol))
+                    }
+                }
+                opStack = newOpStack
+            }
+        }
+    }
+    
+    
+    
+    
+    
     private func evaluate(ops: [Op]) -> (result:Double?, remainingOps: [Op])
     {
         if !ops.isEmpty{
@@ -143,6 +177,26 @@ class CalculatorBrain{
         }
         
         return (nil,ops)
+    }
+    
+    func evaluateAndReportErrors() -> CalculatorBrainEvaluationResult {
+        if let evaluationResult = evaluate() {
+            if evaluationResult.isInfinite {
+                return CalculatorBrainEvaluationResult.Failure("Infinite value")
+            } else if evaluationResult.isNaN {
+                return CalculatorBrainEvaluationResult.Failure("Not a number")
+            } else {
+                return CalculatorBrainEvaluationResult.Success(evaluationResult)
+            }
+        } else {
+            if let returnError = error {
+                // We consumed the error, now set error back to nil
+                error = nil
+                return CalculatorBrainEvaluationResult.Failure(returnError)
+            } else {
+                return CalculatorBrainEvaluationResult.Failure("Error")
+            }
+        }
     }
     
     func evaluate() -> Double? {

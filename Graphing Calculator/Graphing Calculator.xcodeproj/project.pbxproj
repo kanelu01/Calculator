@@ -17,7 +17,7 @@
 		FA27741D1C984506001F24BA /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA27741C1C984506001F24BA /* CalculatorBrain.swift */; };
 		FA27741F1C9845A8001F24BA /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA27741E1C9845A8001F24BA /* CalculatorViewController.swift */; };
 		FA8B5C3D1C9AE41F00118E1D /* AxesDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B5C3C1C9AE41F00118E1D /* AxesDrawer.swift */; };
-		FA8B5C3F1C9AE4AD00118E1D /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B5C3E1C9AE4AD00118E1D /* GraphView.swift */; };
+		FA8B5C3F1C9AE4AD00118E1D /* GraphingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B5C3E1C9AE4AD00118E1D /* GraphingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		FA27741C1C984506001F24BA /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		FA27741E1C9845A8001F24BA /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		FA8B5C3C1C9AE41F00118E1D /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
-		FA8B5C3E1C9AE4AD00118E1D /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		FA8B5C3E1C9AE4AD00118E1D /* GraphingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				FA2773F01C9843FB001F24BA /* GraphingViewController.swift */,
-				FA8B5C3E1C9AE4AD00118E1D /* GraphView.swift */,
+				FA8B5C3E1C9AE4AD00118E1D /* GraphingView.swift */,
 				FA27741E1C9845A8001F24BA /* CalculatorViewController.swift */,
 				FA27741C1C984506001F24BA /* CalculatorBrain.swift */,
 				FA2773F21C9843FB001F24BA /* Main.storyboard */,
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA8B5C3F1C9AE4AD00118E1D /* GraphView.swift in Sources */,
+				FA8B5C3F1C9AE4AD00118E1D /* GraphingView.swift in Sources */,
 				FA27741D1C984506001F24BA /* CalculatorBrain.swift in Sources */,
 				FA2773F11C9843FB001F24BA /* GraphingViewController.swift in Sources */,
 				FA8B5C3D1C9AE41F00118E1D /* AxesDrawer.swift in Sources */,

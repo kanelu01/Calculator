@@ -22,10 +22,6 @@
         <!--Graphing View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <tapGestureRecognizer id="l5L-IP-Mrd"/>
-                <pinchGestureRecognizer id="r6l-OS-Jtw"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="OLg-FG-QDh"/>
                 <viewController id="BYZ-38-t0r" customClass="GraphingViewController" customModule="Graphing_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -35,16 +31,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iKV-su-EPG" customClass="GraphView" customModule="Graphing_Calculator" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKV-su-EPG" customClass="GraphingView" customModule="Graphing_Calculator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OLg-FG-QDh" appends="YES" id="ASN-GU-amt"/>
+                                    <outletCollection property="gestureRecognizers" destination="r6l-OS-Jtw" appends="YES" id="Gn7-Hq-RNe"/>
+                                    <outletCollection property="gestureRecognizers" destination="l5L-IP-Mrd" appends="YES" id="3iy-jH-LtM"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iKV-su-EPG" secondAttribute="trailing" id="Bit-I4-47e"/>
+                            <constraint firstItem="iKV-su-EPG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="V0a-CL-77g"/>
+                            <constraint firstItem="iKV-su-EPG" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="pnS-QB-ZzB"/>
+                            <constraint firstItem="iKV-su-EPG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uZN-NS-hUD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="graphingView" destination="iKV-su-EPG" id="nsI-Bt-quQ"/>
+                    </connections>
                 </viewController>
+                <tapGestureRecognizer id="l5L-IP-Mrd">
+                    <connections>
+                        <action selector="moveOrigin:" destination="BYZ-38-t0r" id="aI5-xL-aTz"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <pinchGestureRecognizer id="r6l-OS-Jtw">
+                    <connections>
+                        <action selector="zoomGraph:" destination="BYZ-38-t0r" id="2Rg-oA-SUe"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="OLg-FG-QDh">
+                    <connections>
+                        <action selector="moveGraph:" destination="BYZ-38-t0r" id="x9T-Rg-O9G"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="490" y="1158"/>
+            <point key="canvasLocation" x="640" y="1134"/>
         </scene>
         <!--Calculator View Controller-->
         <scene sceneID="MI8-zv-tGc">
@@ -255,7 +281,7 @@ Unicode: U+23CE, UTF-8: E2 8F 8E</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Graph"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Show Graph" id="xVm-oV-20t"/>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="show graph" id="J1n-Sk-p9N"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSy-3m-Fgu">
@@ -411,6 +437,6 @@ Unicode: U+23CE, UTF-8: E2 8F 8E</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xVm-oV-20t"/>
+        <segue reference="J1n-Sk-p9N"/>
     </inferredMetricsTieBreakers>
 </document>

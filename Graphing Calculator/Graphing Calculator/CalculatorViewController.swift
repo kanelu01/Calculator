@@ -121,21 +121,14 @@ class CalculatorViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            switch identifier {
-            case "Show Graph":
-                if let vc = segue.destinationViewController as? GraphingViewController {
-                    vc.brain = self.brain
-                    if let brainDescription = brain.description{
-                        //need this to split on specific operatopn
-                        let descriptionArray = brainDescription
-                        vc.graphTitle = descriptionArray
-                    }
-                    
-                }
-            default: break
+        var destination: UIViewController? = segue.destinationViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController
+        }
+        if let gvc = destination as? GraphingViewController {
+            gvc.program = brain.program
+            if let graphLabel = brain.description {
+                gvc.graphLabel = graphLabel
             }
         }
-    }
-    
-}
+    }}
